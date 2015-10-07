@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+	<channel>
+		<title>GitHub Trending - {{language["name"]}} - {{timespan["name"]}}</title>
+		<description></description>
+		<link>https://github.com/trending?l={{language["id"]}}&amp;since={{timespan["id"]}}</link>
+
+		<!-- Projects -->
+		{% for project in projects %}
+		<item>
+			<title>{{project["name"]|e}}</title>
+			<description>{{project["description"]|e}}</description>
+			<link>{{project["url"]|e}}</link>
+			<guid>{{project["url"]|e}}</guid>
+		</item>
+		{% endfor %}
+	</channel>
+</rss>

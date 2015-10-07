@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+	<title>GitHub unofficial trending projects RSS feeds</title>
+	<style type="text/css">
+		th 
+		{
+			text-align: left;
+		}
+	</style>
+</head>
+<body>
+	<h1>GitHub unofficial trending projects RSS feeds</h1>
+	<p>GitHub recently introduced a new <a href="https://github.com/trending">trending page</a>, which brought the ability to filter trending projects by language. However, no official RSS feeds seem to be available, and the <a href="http://github-trends.oscardelben.com/">unofficial ones</a> do not seem to be working. In order to fix that, here is another GitHub trending-to-RSS service. Here is the list of RSS feeds:</p>
+	<table> 
+		<tr><th>Language</th>{% for timespan in timespans %} <th>{{timespan['name']}}</th> {%endfor%}
+		{% for language in languages %}
+		<tr>
+			<td>{{language["name"]}}</td>
+			{% for timespan in timespans %}
+			<td><a href="/rss?language={{language['id']}}&amp;timespan={{timespan['id']}}">{{language["name"]}} / {{timespan["name"]}}</a></td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>
+{% endautoescape %}
